@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Suraj Desai - Product Analyst Portfolio</title>
+    <!-- Chosen Palette: Calm Neutral -->
+    <!-- Application Structure Plan: The SPA is designed as a top-to-bottom narrative portfolio. A fixed navigation bar allows quick access to key sections: an introduction, two detailed project case studies, and a skills summary. This single-page, linear structure is ideal for busy recruiters, allowing them to quickly scan or deep-dive into specific projects. Each project section is designed to be a self-contained story, using interactive charts and animated stats to highlight key results and make the data more engaging and memorable than static text. This architecture prioritizes clarity, impact, and ease of navigation. -->
+    <!-- Visualization & Content Choices: Project 1 (Funnel Optimization): Goal is to showcase A/B testing impact. An interactive Chart.js bar chart is used to visualize the conversion uplift, with buttons to toggle between 'Overall' and 'Mobile' data, making the results dynamic and explorable. Project 2 (Feature Launch): Goal is to demonstrate the impact of a new feature. Animated counters are used for key metrics (15% sign-up increase, 10% MRR increase) to create a "wow" factor and draw immediate attention to the business value. A simple HTML/CSS diagram explains the billing flow. These choices make quantitative data the hero of the story, justifying the projects' success in a visually compelling way. No SVG/Mermaid is used. -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #FDFBF7;
+            color: #3D4451;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 350px;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 400px;
+            }
+        }
+        .nav-link {
+            transition: color 0.3s ease;
+        }
+        .nav-link:hover {
+            color: #A59481;
+        }
+        .stat-card {
+            background-color: #FFFFFF;
+            border: 1px solid #E5E7EB;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+        }
+        .project-card {
+            background-color: #FFFFFF;
+            border: 1px solid #E5E7EB;
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <header class="bg-white/80 backdrop-blur-md sticky top-0 z-50 border-b border-gray-200">
+        <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center">
+                    <span class="font-bold text-xl text-gray-800">Suraj Desai</span>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-4">
+                        <a href="#about" class="nav-link text-gray-600 px-3 py-2 rounded-md text-sm font-medium">About</a>
+                        <a href="#project-apollo" class="nav-link text-gray-600 px-3 py-2 rounded-md text-sm font-medium">Funnel Optimization</a>
+                        <a href="#project-horizon" class="nav-link text-gray-600 px-3 py-2 rounded-md text-sm font-medium">Feature Launch</a>
+                        <a href="#skills" class="nav-link text-gray-600 px-3 py-2 rounded-md text-sm font-medium">Skills</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section id="about" class="py-20 md:py-28">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <h1 class="text-4xl md:text-5xl font-bold tracking-tight text-gray-900 mb-4">Product Analyst</h1>
+                <p class="mt-4 max-w-2xl mx-auto text-lg text-gray-600">
+                    A data-driven Product Analyst with 4+ years of SaaS and digital product experience. I translate complex data into clear, impactful strategies, collaborating with product managers and engineers to turn raw numbers into meaningful changes. My passion is uncovering hidden trends, reducing onboarding friction, and finding small optimizations for big user wins.
+                </p>
+            </div>
+        </section>
+
+        <div class="bg-white">
+            <section id="project-apollo" class="py-20 md:py-24">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="text-center mb-16">
+                        <h2 class="text-base font-semibold text-[#A59481] tracking-wider uppercase">Case Study 1</h2>
+                        <p class="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Optimizing The Gym Group's Sign-Up Funnel</p>
+                        <p class="mt-4 max-w-3xl mx-auto text-xl text-gray-500">This project demonstrates how I used data analysis and A/B testing to identify and resolve critical friction points in the member sign-up journey, leading to significant improvements in conversion rates and revenue.</p>
+                    </div>
+
+                    <div class="project-card rounded-2xl p-8 md:p-12">
+                        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                            <div>
+                                <h3 class="text-2xl font-semibold text-gray-900 mb-4">The Problem</h3>
+                                <p class="text-gray-600 mb-6">Data analysis revealed a major drop-off point on the membership selection page. My investigation pointed to three key factors:</p>
+                                <ul class="space-y-4">
+                                    <li class="flex items-start">
+                                        <span class="flex-shrink-0 h-6 w-6 text-xl">🤯</span>
+                                        <p class="ml-3 text-gray-700"><strong class="font-medium">Choice Overload:</strong> The page presented multiple tiers (Standard, Ultimate, Off-Peak) with various add-ons, causing decision fatigue.</p>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <span class="flex-shrink-0 h-6 w-6 text-xl">⏳</span>
+                                        <p class="ml-3 text-gray-700"><strong class="font-medium">Lack of Urgency:</strong> The calls-to-action were passive and didn't effectively convey the benefits of joining immediately.</p>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <span class="flex-shrink-0 h-6 w-6 text-xl">📱</span>
+                                        <p class="ml-3 text-gray-700"><strong class="font-medium">Mobile Friction:</strong> The layout was not optimized for smaller screens, making it difficult for mobile users to compare plans.</p>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h3 class="text-2xl font-semibold text-gray-900 mb-4">My Role & Process</h3>
+                                <p class="text-gray-600 mb-6">As the primary product analyst, I collaborated with product, design, and engineering teams. My process involved:</p>
+                                <ol class="list-decimal list-inside space-y-3 text-gray-700">
+                                    <li><strong class="font-medium">Deep-Dive Analysis:</strong> Used GA4 and SQL to segment the funnel by device and acquisition channel to pinpoint drop-off.</li>
+                                    <li><strong class="font-medium">Experiment Design:</strong> Designed a multi-variant A/B test to validate the hypothesis that a simpler layout and stronger CTA would improve conversion.</li>
+                                    <li><strong class="font-medium">Data Storytelling:</strong> Presented findings to stakeholders to secure buy-in for a full rollout of the winning variant.</li>
+                                </ol>
+                            </div>
+                        </div>
+
+                        <div class="mt-16">
+                            <h3 class="text-2xl font-semibold text-gray-900 text-center mb-2">The Impact: A/B Test Results</h3>
+                            <p class="text-center text-gray-600 mb-6">Variant B, featuring a simplified layout and a highlighted recommended plan, was the clear winner.</p>
+                            <div class="text-center mb-6">
+                                <div class="inline-flex rounded-md shadow-sm">
+                                    <button id="overallBtn" class="relative inline-flex items-center px-4 py-2 rounded-l-md border border-gray-300 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:z-10 focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500">Overall</button>
+                                    <button id="mobileBtn" class="relative -ml-px inline-flex items-center px-4 py-2 rounded-r-md border border-gray-300 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:z-10 focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500">Mobile</button>
+                                </div>
+                            </div>
+                            <div class="chart-container">
+                                <canvas id="conversionChart"></canvas>
+                            </div>
+                             <p id="chart-description" class="text-center mt-4 text-lg text-gray-800 font-medium"></p>
+                        </div>
+                        
+                        <div class="mt-12 bg-gray-50 rounded-lg p-6">
+                            <h4 class="text-xl font-semibold text-gray-900">Final Business Outcomes</h4>
+                            <p class="text-gray-600 mt-2">The full rollout was a success. Within the first month, the changes led to a <strong class="text-green-600">5% increase in monthly recurring revenue (MRR)</strong> and a <strong class="text-green-600">12% decrease in bounce rate</strong> on the pricing page.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <section id="project-horizon" class="py-20 md:py-24">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h2 class="text-base font-semibold text-[#A59481] tracking-wider uppercase">Case Study 2</h2>
+                    <p class="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Project Horizon: Introducing "Pay Now, Start Later"</p>
+                    <p class="mt-4 max-w-3xl mx-auto text-xl text-gray-500">This project involved identifying a key user need for flexibility in membership start dates. I'll walk you through how we used data to build a business case for a new feature that captured previously lost revenue.</p>
+                </div>
+
+                <div class="project-card rounded-2xl p-8 md:p-12">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                        <div>
+                            <h3 class="text-2xl font-semibold text-gray-900 mb-4">The User Need</h3>
+                            <p class="text-gray-600 mb-6">Through analysis of user feedback and sign-up data, I identified a clear pattern: many potential members wanted to take advantage of promotional offers but weren't ready to start their membership immediately. This created a significant friction point, leading to lost conversions.</p>
+                            <h4 class="font-semibold text-gray-800 mb-2">Key Findings:</h4>
+                            <ul class="list-disc list-inside space-y-2 text-gray-700">
+                                <li>High drop-off rates during promotional periods from users who hesitated at payment.</li>
+                                <li>Qualitative feedback from customer support confirmed demand for flexible start dates.</li>
+                                <li>Cohort analysis suggested a large, untapped segment of "plan-ahead" users.</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-semibold text-gray-900 mb-4">The Solution: Pay Now, Start Later</h3>
+                            <p class="text-gray-600 mb-6">We introduced a new option in the sign-up flow allowing users to select a membership start date up to 30 days in the future. This simple change had a powerful impact.</p>
+                            <h4 class="font-semibold text-gray-800 mb-2">Billing Process:</h4>
+                            <div class="space-y-4">
+                                <div class="flex items-center">
+                                    <div class="flex-shrink-0 bg-[#A59481] h-8 w-8 rounded-full flex items-center justify-center text-white font-bold">1</div>
+                                    <p class="ml-4 text-gray-700">User pays for the first month and any joining fees immediately.</p>
+                                </div>
+                                <div class="flex items-center">
+                                    <div class="flex-shrink-0 bg-[#A59481] h-8 w-8 rounded-full flex items-center justify-center text-white font-bold">2</div>
+                                    <p class="ml-4 text-gray-700">The chosen future start date is recorded.</p>
+                                </div>
+                                <div class="flex items-center">
+                                    <div class="flex-shrink-0 bg-[#A59481] h-8 w-8 rounded-full flex items-center justify-center text-white font-bold">3</div>
+                                    <p class="ml-4 text-gray-700">Membership is activated on the start date, granting gym access.</p>
+                                </div>
+                                <div class="flex items-center">
+                                    <div class="flex-shrink-0 bg-[#A59481] h-8 w-8 rounded-full flex items-center justify-center text-white font-bold">4</div>
+                                    <p class="ml-4 text-gray-700">Subsequent billing cycles align with the chosen start date.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-16 text-center">
+                        <h3 class="text-2xl font-semibold text-gray-900 mb-8">The Impact: Quantifiable Results</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-3xl mx-auto">
+                            <div class="stat-card p-6 rounded-lg text-center">
+                                <p class="text-5xl font-bold text-green-600" data-target="15">0%</p>
+                                <p class="mt-2 text-lg text-gray-600">Increase in Sign-Ups</p>
+                                <p class="text-sm text-gray-500">During first promotional period</p>
+                            </div>
+                            <div class="stat-card p-6 rounded-lg text-center">
+                                <p class="text-5xl font-bold text-green-600" data-target="10">0%</p>
+                                <p class="mt-2 text-lg text-gray-600">Increase in MRR</p>
+                                <p class="text-sm text-gray-500">From new member acquisition</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <section id="skills" class="py-20 md:py-24 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Core Skills</h2>
+                    <p class="mt-4 max-w-2xl mx-auto text-xl text-gray-500">A blend of technical expertise and product-focused strategy to drive data-informed decisions.</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="stat-card p-8 rounded-lg">
+                        <h3 class="text-xl font-semibold text-gray-900 mb-4">Analytics & Tools</h3>
+                        <ul class="space-y-2 text-gray-600">
+                            <li>Product Analytics (Amplitude & GA4)</li>
+                            <li>Data Visualization (Power BI)</li>
+                            <li>SQL & Data Extraction (REST API)</li>
+                            <li>A/B Testing & Experimentation</li>
+                            <li>Jira & Postman</li>
+                        </ul>
+                    </div>
+                    <div class="stat-card p-8 rounded-lg">
+                        <h3 class="text-xl font-semibold text-gray-900 mb-4">Product Skills</h3>
+                        <ul class="space-y-2 text-gray-600">
+                            <li>User Behavior Analysis</li>
+                            <li>Product Strategy & Roadmap</li>
+                            <li>KPI Definition & Monitoring</li>
+                            <li>Funnel & Cohort Analysis</li>
+                            <li>Product Release Validation</li>
+                        </ul>
+                    </div>
+                    <div class="stat-card p-8 rounded-lg">
+                        <h3 class="text-xl font-semibold text-gray-900 mb-4">Soft Skills</h3>
+                        <ul class="space-y-2 text-gray-600">
+                            <li>Stakeholder Management</li>
+                            <li>Data Storytelling</li>
+                            <li>Cross-functional Collaboration</li>
+                            <li>Agile Methodology</li>
+                            <li>Strategic Problem-Solving</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            let chart;
+            const chartCanvas = document.getElementById('conversionChart');
+            const overallBtn = document.getElementById('overallBtn');
+            const mobileBtn = document.getElementById('mobileBtn');
+            const chartDescription = document.getElementById('chart-description');
+
+            const data = {
+                overall: {
+                    labels: ['Control', 'Variant B'],
+                    values: [100, 110],
+                    description: "Variant B drove a 10% uplift in overall sign-up conversion."
+                },
+                mobile: {
+                    labels: ['Control', 'Variant B'],
+                    values: [100, 115],
+                    description: "The improvement was most pronounced on mobile, with a 15% uplift."
+                }
+            };
+
+            const chartOptions = {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { display: false },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                let label = context.dataset.label || '';
+                                if (label) {
+                                    label += ': ';
+                                }
+                                if (context.parsed.y !== null) {
+                                    label += `+${context.parsed.y - 100}%`;
+                                }
+                                return label;
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        ticks: {
+                            callback: function(value) {
+                                return value + '%';
+                            },
+                            stepSize: 10
+                        },
+                         title: {
+                            display: true,
+                            text: 'Relative Conversion Rate'
+                        }
+                    }
+                },
+                animation: {
+                    duration: 1500,
+                    easing: 'easeInOutQuad'
+                }
+            };
+            
+            function createOrUpdateChart(dataset) {
+                chartDescription.textContent = dataset.description;
+                if (chart) {
+                    chart.data.datasets[0].data = dataset.values;
+                    chart.update();
+                } else {
+                    chart = new Chart(chartCanvas, {
+                        type: 'bar',
+                        data: {
+                            labels: dataset.labels,
+                            datasets: [{
+                                label: 'Conversion Rate',
+                                data: dataset.values,
+                                backgroundColor: [
+                                    'rgba(192, 192, 192, 0.6)',
+                                    'rgba(113, 189, 113, 0.6)'
+                                ],
+                                borderColor: [
+                                    'rgba(192, 192, 192, 1)',
+                                    'rgba(113, 189, 113, 1)'
+                                ],
+                                borderWidth: 1
+                            }]
+                        },
+                        options: chartOptions
+                    });
+                }
+            }
+            
+            function setActiveButton(activeBtn) {
+                [overallBtn, mobileBtn].forEach(btn => {
+                    btn.classList.remove('bg-gray-200', 'font-bold');
+                    btn.classList.add('bg-white', 'font-medium');
+                });
+                activeBtn.classList.add('bg-gray-200', 'font-bold');
+                activeBtn.classList.remove('bg-white', 'font-medium');
+            }
+
+            overallBtn.addEventListener('click', () => {
+                createOrUpdateChart(data.overall);
+                setActiveButton(overallBtn);
+            });
+
+            mobileBtn.addEventListener('click', () => {
+                createOrUpdateChart(data.mobile);
+                setActiveButton(mobileBtn);
+            });
+
+            const observerOptions = {
+                root: null,
+                threshold: 0.1
+            };
+
+            const chartObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        createOrUpdateChart(data.overall);
+                        setActiveButton(overallBtn);
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            if (chartCanvas) {
+                chartObserver.observe(chartCanvas);
+            }
+            
+            const counterObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const el = entry.target;
+                        const target = +el.getAttribute('data-target');
+                        let current = 0;
+                        const increment = target / 100;
+
+                        const updateCount = () => {
+                            if (current < target) {
+                                current += increment;
+                                el.innerText = `${Math.ceil(current)}%`;
+                                requestAnimationFrame(updateCount);
+                            } else {
+                                el.innerText = `${target}%`;
+                            }
+                        };
+                        updateCount();
+                        observer.unobserve(el);
+                    }
+                });
+            }, { threshold: 0.5 });
+
+            document.querySelectorAll('[data-target]').forEach(el => {
+                counterObserver.observe(el);
+            });
+
+        });
+    </script>
+
+</body>
+</html>
