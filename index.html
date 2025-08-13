@@ -69,6 +69,7 @@
                         <a href="#about" class="nav-link text-gray-600 px-3 py-2 rounded-md text-sm font-medium">About</a>
                         <a href="#project-apollo" class="nav-link text-gray-600 px-3 py-2 rounded-md text-sm font-medium">Funnel Optimization</a>
                         <a href="#project-horizon" class="nav-link text-gray-600 px-3 py-2 rounded-md text-sm font-medium">Feature Launch</a>
+                        <a href="#project-streamline" class="nav-link text-gray-600 px-3 py-2 rounded-md text-sm font-medium">Workflow Optimization</a>
                         <a href="#skills" class="nav-link text-gray-600 px-3 py-2 rounded-md text-sm font-medium">Skills</a>
                     </div>
                 </div>
@@ -213,6 +214,71 @@
                 </div>
             </section>
         </div>
+
+        <section id="project-streamline" class="py-20 md:py-24 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h2 class="text-base font-semibold text-[#A59481] tracking-wider uppercase">Case Study 3</h2>
+                    <p class="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Project Streamline: Optimizing JIRA Ticket Workflows</p>
+                    <p class="mt-4 max-w-3xl mx-auto text-xl text-gray-500">This project highlights how I enhanced operational efficiency and cross-functional collaboration by redesigning critical JIRA-based ticket workflows.</p>
+                </div>
+
+                <div class="project-card rounded-2xl p-8 md:p-12">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+                        <div>
+                            <h3 class="text-2xl font-semibold text-gray-900 mb-4">The Challenge</h3>
+                            <p class="text-gray-600 mb-6">Existing JIRA-based ticket workflows were fragmented and inefficient, leading to significant bottlenecks and communication gaps across various departments. This directly impacted:</p>
+                            <ul class="space-y-4">
+                                <li class="flex items-start">
+                                    <span class="flex-shrink-0 h-6 w-6 text-xl">🐌</span>
+                                    <p class="ml-3 text-gray-700"><strong class="font-medium">Slow Resolution Times:</strong> Tickets lingered in queues due to unclear hand-offs and lack of ownership clarity.</p>
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="flex-shrink-0 h-6 w-6 text-xl">🗣️</span>
+                                    <p class="ml-3 text-gray-700"><strong class="font-medium">Communication Overhead:</strong> Teams (Technical Support, Customer Service, Data Protection) spent excessive time on manual updates and internal communication to track ticket progress.</p>
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="flex-shrink-0 h-6 w-6 text-xl">🙈</span>
+                                    <p class="ml-3 text-gray-700"><strong class="font-medium">Limited Visibility:</strong> Stakeholders lacked a clear, real-time view of ticket statuses, hindering effective prioritization and resource allocation.</p>
+                                </li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-semibold text-gray-900 mb-4">My Role & Approach</h3>
+                            <p class="text-gray-600 mb-6">I led the analytical and design phases, working closely with key stakeholders to dissect current processes and conceptualize optimized workflows:</p>
+                            <ol class="list-decimal list-inside space-y-3 text-gray-700">
+                                <li><strong class="font-medium">Workflow Analysis:</strong> Mapped out existing JIRA workflows to identify inefficiencies, redundant steps, and critical points of friction.</li>
+                                <li><strong class="font-medium">Cross-Functional Collaboration:</strong> Facilitated workshops with Technical Support, Customer Service, and Data Protection teams to gather requirements and ensure alignment on new process designs.</li>
+                                <li><strong class="font-medium">Design & Implementation:</strong> Designed streamlined JIRA configurations, including new ticket types, custom fields, and automated transitions, to reflect optimized processes.</li>
+                                <li><strong class="font-medium">KPI Definition & Monitoring:</strong> Defined clear Key Performance Metrics (KPIs) like average resolution time, inter-team hand-off duration, and communication touchpoints. Implemented dashboards to monitor their effectiveness post-launch.</li>
+                            </ol>
+                        </div>
+                    </div>
+
+                    <div class="mt-16">
+                        <h3 class="text-2xl font-semibold text-gray-900 text-center mb-8">Workflow Handoff Time: Before & After</h3>
+                        <p class="text-center text-gray-600 mb-8">By streamlining workflows, we significantly reduced the average time tickets spent in internal handoffs between teams.</p>
+                        <div class="chart-container">
+                            <canvas id="workflowHandoffChart"></canvas>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-16">
+                        <h3 class="text-2xl font-semibold text-gray-900 text-center mb-8">Key Performance Metrics & Results</h3>
+                        <p class="text-center text-gray-600 mb-8">The optimized workflows led to measurable improvements across the board, validated by our newly defined KPIs.</p>
+                        <!-- Chart for Project Streamline -->
+                        <div class="chart-container">
+                            <canvas id="streamlineChart"></canvas>
+                        </div>
+                    </div>
+
+                    <div class="mt-12 bg-gray-50 rounded-lg p-6">
+                        <h4 class="text-xl font-semibold text-gray-900">Final Business Outcomes</h4>
+                        <p class="text-gray-600 mt-2">The streamlined JIRA workflows significantly improved operational efficiency. We observed a <strong class="text-green-600">25% reduction in average ticket resolution time</strong> and a <strong class="text-green-600">30% decrease in internal communication overhead</strong> related to ticket status, leading to enhanced team productivity and faster customer issue resolution.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
 
         <section id="skills" class="py-20 md:py-24 bg-white">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -412,6 +478,150 @@
                 counterObserver.observe(el);
             });
 
+            // --- Chart for Project Streamline - Operational Efficiency Improvements ---
+            const streamlineChartCanvas = document.getElementById('streamlineChart');
+            if (streamlineChartCanvas) {
+                new Chart(streamlineChartCanvas, {
+                    type: 'bar',
+                    data: {
+                        labels: ['Avg. Resolution Time', 'Internal Comms Overhead'],
+                        datasets: [{
+                            label: 'Percentage Reduction',
+                            data: [25, 30], // 25% reduction in resolution time, 30% reduction in communication overhead
+                            backgroundColor: [
+                                'rgba(75, 192, 192, 0.6)', // Greenish-blue for positive impact
+                                'rgba(153, 102, 255, 0.6)' // Purple for positive impact
+                            ],
+                            borderColor: [
+                                'rgba(75, 192, 192, 1)',
+                                'rgba(153, 102, 255, 1)'
+                            ],
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: {
+                                display: false
+                            },
+                            title: {
+                                display: true,
+                                text: 'Operational Efficiency Improvements',
+                                font: {
+                                    size: 16
+                                }
+                            },
+                            tooltip: {
+                                callbacks: {
+                                    label: function(context) {
+                                        let label = context.dataset.label || '';
+                                        if (label) {
+                                            label += ': ';
+                                        }
+                                        if (context.parsed.y !== null) {
+                                            label += `${context.parsed.y}% Reduction`;
+                                        }
+                                        return label;
+                                    }
+                                }
+                            }
+                        },
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                                max: 40,
+                                ticks: {
+                                    callback: function(value) {
+                                        return value + '%';
+                                    }
+                                },
+                                title: {
+                                    display: true,
+                                    text: 'Reduction (%)'
+                                }
+                            }
+                        },
+                        animation: {
+                            duration: 1500,
+                            easing: 'easeInOutQuad'
+                        }
+                    }
+                });
+            }
+
+            // --- New Chart for Workflow Handoff: Before & After ---
+            const workflowHandoffChartCanvas = document.getElementById('workflowHandoffChart');
+            if (workflowHandoffChartCanvas) {
+                new Chart(workflowHandoffChartCanvas, {
+                    type: 'bar',
+                    data: {
+                        labels: ['Before', 'After'],
+                        datasets: [{
+                            label: 'Average Handoff Time (Hours)',
+                            data: [12, 4], // Example: Reduced from 12 hours to 4 hours
+                            backgroundColor: [
+                                'rgba(255, 99, 132, 0.6)', // Red for 'Before'
+                                'rgba(54, 162, 235, 0.6)'  // Blue for 'After'
+                            ],
+                            borderColor: [
+                                'rgba(255, 99, 132, 1)',
+                                'rgba(54, 162, 235, 1)'
+                            ],
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: {
+                                display: false
+                            },
+                            title: {
+                                display: true,
+                                text: 'Average Inter-Team Handoff Time',
+                                font: {
+                                    size: 16
+                                }
+                            },
+                            tooltip: {
+                                callbacks: {
+                                    label: function(context) {
+                                        let label = context.dataset.label || '';
+                                        if (label) {
+                                            label += ': ';
+                                        }
+                                        if (context.parsed.y !== null) {
+                                            label += `${context.parsed.y} Hours`;
+                                        }
+                                        return label;
+                                    }
+                                }
+                            }
+                        },
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                                ticks: {
+                                    callback: function(value) {
+                                        return value + 'h';
+                                    }
+                                },
+                                title: {
+                                    display: true,
+                                    text: 'Time (Hours)'
+                                }
+                            }
+                        },
+                        animation: {
+                            duration: 1500,
+                            easing: 'easeInOutQuad'
+                        }
+                    }
+                });
+            }
         });
     </script>
 
